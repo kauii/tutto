@@ -2,9 +2,12 @@ package Tutto.Logic;
 
 public class Printer {
 
-    public void printTurn(int[] dicesKept, int[] dicesRolled) {
+    public void printTurn(int[] dicesKept, int[] dicesRolled, int points) {
         StringBuilder msg;
         int counter = 0;
+
+        // Print current points
+        System.out.println("Current points: " + points);
 
         System.out.println("=== Kept Dices ===");
         // print the values of each dice that is being kept atm

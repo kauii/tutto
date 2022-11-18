@@ -18,7 +18,7 @@ public class DiceSet {
     // roll dices
     public int[] rollSet() {
         int[] values;
-        ArrayList<Integer> val = new ArrayList<Integer>();
+        ArrayList<Integer> val = new ArrayList<>();
 
         // iterate through every dice
         for (Dice dice : dices) {
