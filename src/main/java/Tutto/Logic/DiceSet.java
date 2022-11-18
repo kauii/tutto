@@ -16,17 +16,15 @@ public class DiceSet {
     Dice[] dices = {d1, d2, d3, d4, d5, d6};
 
     // roll dices
-    public int[] rollSet() {
+    public int[] rollSet(int amount) {
         int[] values;
         ArrayList<Integer> val = new ArrayList<>();
 
-        // iterate through every dice
-        for (Dice dice : dices) {
-            // if dice not locked -> roll dice and set new value in array
-            if (!dice.getLocked()) {
-                val.add(dice.roll());
-            }
+        // iterate through remaining dices
+        for(int i=0;i<amount;i++){
+            val.add(dices[i].roll());
         }
+
         values = val.stream().mapToInt(i -> i).toArray();
         // returns an array with the values of the rolled dices
         return values;

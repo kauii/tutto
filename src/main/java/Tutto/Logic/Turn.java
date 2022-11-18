@@ -19,7 +19,7 @@ public class Turn {
         boolean isValid;
 
         while (!ending) {
-            int[] dicesRolled = diceSet.rollSet();
+            int[] dicesRolled = diceSet.rollSet(6- dicesKept.length);
             printer.printTurn(dicesKept, dicesRolled, points);
 
             // check if null round via DiceLogic
@@ -99,6 +99,9 @@ public class Turn {
             tryAgain = inp.charAt(0) == 'y';
 
         } while (!tryAgain);
+
+        // TODO: Lock dices
+
         return dicesKeep;
     }
 

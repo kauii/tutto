@@ -5,6 +5,7 @@ out/
 tutto.iml
 .idea
 pom.xml
+target/
 
 ### Eclipse ###
 .apt_generated
