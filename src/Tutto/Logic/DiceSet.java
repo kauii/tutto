@@ -1,5 +1,7 @@
 package Tutto.Logic;
 
+import java.util.ArrayList;
+
 public class DiceSet {
 
     // create dices
@@ -14,17 +16,19 @@ public class DiceSet {
     Dice[] dices = {d1, d2, d3, d4, d5, d6};
 
     // roll dices
-    public int[] roll() {
-        int[] values = {0, 0, 0, 0, 0, 0};
+    public int[] rollSet() {
+        int[] values;
+        ArrayList<Integer> val = new ArrayList<Integer>();
 
         // iterate through every dice
-        for (int i = 0; i < dices.length; i++) {
-            // if dice locked -> value remains 0
-            if (!dices[i].getLocked()) {
-                // if dice not locked -> roll dice and set new value in array
-                values[i] = dices[i].roll();
+        for (Dice dice : dices) {
+            // if dice not locked -> roll dice and set new value in array
+            if (!dice.getLocked()) {
+                val.add(dice.roll());
             }
         }
+        values = val.stream().mapToInt(i -> i).toArray();
+        // returns an array with the values of the rolled dices
         return values;
     }
 
