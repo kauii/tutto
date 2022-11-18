@@ -100,8 +100,6 @@ public class Turn {
 
         } while (!tryAgain);
 
-        // TODO: Lock dices
-
         return dicesKeep;
     }
 
