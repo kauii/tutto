@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 tutto.iml
 .idea
+pom.xml
 
 ### Eclipse ###
 .apt_generated

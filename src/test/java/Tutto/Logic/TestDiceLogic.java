@@ -1,4 +1,4 @@
-package test.Logic;
+package test.java.Tutto.Logic;
 
 public class TestDiceLogic {
 }
