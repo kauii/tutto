@@ -28,6 +28,9 @@ public class CardLogic {
         if (Objects.equals(card, "CLOVERLEAF")) {
             score = cloverCard();
         }
+        if (Objects.equals(card, "STRAIGHT")) {
+            score = straightCard();
+        }
     }
 
     //BONUS - RULE
@@ -82,6 +85,13 @@ public class CardLogic {
             }
         }
         return 0;
+    }
+
+    //STRAIGHT - RULE
+    private int straightCard() {
+        StraightTurn turn = new StraightTurn();
+        score = turn.getTurnPoints();
+        return score;
     }
 
     public int getScore() {
