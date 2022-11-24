@@ -14,7 +14,7 @@ class TurnTest {
     }
 
     @Test
-    void nextTurn(){
+    void nextTurn() {
         // intentionally left blank
     }
 
@@ -35,7 +35,7 @@ class TurnTest {
 
     @Test
     void getTurnPoints() {
-        assert (turn.getTurnPoints()==0);
+        assert (turn.getTurnPoints() == 0);
     }
 
     @Test
@@ -45,6 +45,6 @@ class TurnTest {
 
     @Test
     void getNullRound() {
-        assert(!turn.getNullRound());
+        assert (!turn.getNullRound());
     }
 }

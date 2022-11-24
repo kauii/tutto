@@ -8,13 +8,13 @@ class DiceTest {
     Dice dice;
 
     @BeforeEach
-    public void setUp(){
-        dice=new Dice();
+    public void setUp() {
+        dice = new Dice();
     }
 
     @Test
     void roll() {
-        int value=dice.roll();
-        assert (value<=6&&value>=1);
+        int value = dice.roll();
+        assert (value <= 6 && value >= 1);
     }
 }

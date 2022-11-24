@@ -148,40 +148,40 @@ public class DiceLogic {
 
         // check triplets
         if (n2 % 3 == 0) {
-            for(i=0;i<n2/3;i++){
+            for (i = 0; i < n2 / 3; i++) {
                 toKeep.add(2);
             }
         }
         if (n3 % 3 == 0) {
-            for(i=0;i<n3/3;i++){
+            for (i = 0; i < n3 / 3; i++) {
                 toKeep.add(3);
             }
         }
         if (n4 % 3 == 0) {
-            for(i=0;i<n4/3;i++){
+            for (i = 0; i < n4 / 3; i++) {
                 toKeep.add(4);
             }
         }
         if (n6 % 3 == 0) {
-            for(i=0;i<n6/3;i++){
+            for (i = 0; i < n6 / 3; i++) {
                 toKeep.add(6);
             }
         }
 
         // check ones and fives
         if (n1 > 0) {
-            for(i=0;i<n1/3;i++){
+            for (i = 0; i < n1 / 3; i++) {
                 toKeep.add(1);
             }
-            for(i=0;i<n1%3;i++){
+            for (i = 0; i < n1 % 3; i++) {
                 toKeep.add(1);
             }
         }
         if (n5 > 0) {
-            for(i=0;i<n5/3;i++){
+            for (i = 0; i < n5 / 3; i++) {
                 toKeep.add(5);
             }
-            for(i=0;i<n5%3;i++){
+            for (i = 0; i < n5 % 3; i++) {
                 toKeep.add(5);
             }
         }
