@@ -1,24 +1,20 @@
 package Tutto.Logic;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DiceTest {
 
+    Dice dice;
+
+    @BeforeEach
+    public void setUp(){
+        dice=new Dice();
+    }
+
     @Test
     void roll() {
-    }
-
-    @Test
-    void getValue() {
-    }
-
-    @Test
-    void setLocked() {
-    }
-
-    @Test
-    void getLocked() {
+        int value=dice.roll();
+        assert (value<=6&&value>=1);
     }
 }
