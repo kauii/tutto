@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class StraightTurn extends Turn {
 
     private int points = 0;
-    private int[] dicesKept;
+    private int[] dicesKept={};
     StraightLogic logic = new StraightLogic();
     Scanner scanner = new Scanner(System.in);
-    public StraightTurn() {
+    public StraightTurn(String card) {
 
         boolean ending = false;
         int[] checkKeep;

@@ -7,13 +7,13 @@ public class CardLogic {
     boolean tutto;
 
     public void checkCard(String card) {
-
+        System.out.println(card);
         //BONUS
-        if (Objects.equals(card, "BONUS")) {
-            int bonus = card.getBonus();
-            score = bonusCard(bonus);
-        }
-        if (Objects.equals(card, "DOUBLE")) {
+        //if (Objects.equals(card, "BONUS")) {
+            //int bonus = card.getBonus();
+            //score = bonusCard(bonus);
+        //}
+        if (Objects.equals(card, "X2")) {
             score = doubleCard();
         }
         if (Objects.equals(card, "STOP")) {
@@ -35,7 +35,7 @@ public class CardLogic {
 
     //BONUS - RULE
     private int bonusCard(int bonus) {
-        Turn turn = new Turn();
+        Turn turn = new Turn("BONUS");
         tutto = turn.getTutto();
         score = turn.getTurnPoints();
 
@@ -47,7 +47,7 @@ public class CardLogic {
 
     //DOUBLE - RULE
     private int doubleCard() {
-        Turn turn = new Turn();
+        Turn turn = new Turn("DOUBLE");
         tutto = turn.getTutto();
         score = turn.getTurnPoints();
 
@@ -59,13 +59,13 @@ public class CardLogic {
 
     //FIREWORKS - RULE
     private int fireworksCard() {
-        Turn turn = new Turn(); // TODO: turn must change: player MUST keep all valid single dice and triplets, continue till null
+        Turn turn = new Turn("FIREWORKS"); // TODO: turn must change: player MUST keep all valid single dice and triplets, continue till null
         return 0;
     }
 
     //PLUS/MINUS - RULE
     private int plusminusCard() { //TODO: may not stop until tutto
-        Turn turn = new Turn();
+        Turn turn = new Turn("PLUSMINUS");
         tutto = turn.getTutto();
         if (tutto) {
             return 1000;
@@ -75,10 +75,10 @@ public class CardLogic {
 
     //CLOVERLEAF - RULE
     private int cloverCard() {
-        Turn turn1 = new Turn();    //TODO: may not stop until tutto
+        Turn turn1 = new Turn("CLOVERLEAF");    //TODO: may not stop until tutto
         tutto = turn1.getTutto();
         if(tutto) {
-            Turn turn2 = new Turn();
+            Turn turn2 = new Turn("CLOVERLEAF");
             tutto = turn2.getTutto();
             if(tutto) {
                 return 999999999;
@@ -89,7 +89,7 @@ public class CardLogic {
 
     //STRAIGHT - RULE
     private int straightCard() {
-        StraightTurn turn = new StraightTurn();
+        StraightTurn turn = new StraightTurn("STRAIGHT");
         score = turn.getTurnPoints();
         return score;
     }

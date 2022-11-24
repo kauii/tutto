@@ -5,32 +5,36 @@ import java.util.Scanner;
 public class Turn {
 
     private int points = 0;
-    private int[] dicesKept;
+    private int[] dicesKept = {};
     private boolean tutto = false;
-    private boolean nullRound=false;
+    private boolean nullRound = false;
     DiceSet diceSet = new DiceSet();
     Printer printer = new Printer();
     DiceLogic logic = new DiceLogic();
     Scanner scanner = new Scanner(System.in);
 
-    public void Turn(String card) {
+    // default constructor for straight
+    public Turn() {
+
+    }
+
+    public Turn(String card) {
 
         boolean ending = false;
         int[] toKeep;
-        boolean isValid;
 
         while (!ending) {
-            int[] dicesRolled = diceSet.rollSet(6- dicesKept.length);
+            int[] dicesRolled = diceSet.rollSet(6 - dicesKept.length);
             printer.printTurn(dicesKept, dicesRolled, points);
 
             // check if null round via DiceLogic
-            if (!logic.validateNullRound(dicesRolled)) {
+            if (logic.validateNullRound(dicesRolled)) {
                 // if null round -> end
                 ending = true;
-                nullRound=true;
+                nullRound = true;
             } else {
                 // player chooses what dices to keep and validates the choice
-                toKeep=decideKeep(card,dicesRolled);
+                toKeep = decideKeep(card, dicesRolled);
 
                 // add points
                 points += logic.pointsKeep(toKeep);
@@ -46,7 +50,7 @@ public class Turn {
                     ending = true;
                 } else {
                     // Depending on cards, player can choose to end turn
-                    if(!card.equals("FIREWORKS")&&!card.equals("PLUSMINUS")&&!card.equals("CLOVERLEAF")){
+                    if (!card.equals("FIREWORKS") && !card.equals("PLUSMINUS") && !card.equals("CLOVERLEAF")) {
                         // player decides what to do: R -> reroll; E -> ending
                         ending = rerollInput();
                     }
@@ -58,11 +62,11 @@ public class Turn {
         scanner.close();
     }
 
-    private int[] decideKeep(String card,int[] dicesRolled){
+    private int[] decideKeep(String card, int[] dicesRolled) {
         int[] checkKeep;
         boolean isValid;
 
-        if(!card.equals("FIREWORKS")) {
+        if (!card.equals("FIREWORKS")) {
 
             do {
                 // Decide what dice to keep
@@ -70,15 +74,15 @@ public class Turn {
                 // Validate via DiceLogic
                 isValid = logic.validateKeep(checkKeep);
             } while (!isValid);
-        }else{
-            checkKeep=logic.keepAll(dicesRolled);
+        } else {
+            checkKeep = logic.keepAll(dicesRolled);
         }
 
         return checkKeep;
     }
 
 
-    private int[] concatenate(int[] a, int[] b) {
+    protected int[] concatenate(int[] a, int[] b) {
         int aLen = a.length;
         int bLen = b.length;
         int[] con = new int[aLen + bLen];
@@ -88,21 +92,21 @@ public class Turn {
         return con;
     }
 
-    private int[] keepInput(int[] dicesRolled) {
+    protected int[] keepInput(int[] dicesRolled) {
         String inp;
         int[] dicesKeep = new int[dicesRolled.length];
         boolean tryAgain;
 
         do {
             // iterate through rolled dices and ask if to keep
-            for (int i = 0; i <= dicesRolled.length; i++) {
+            for (int i = 1; i <= dicesRolled.length; i++) {
                 System.out.printf("Keep dice No. %d?\n", i);
                 System.out.println("Y - Yes | N - No");
                 inp = scanner.nextLine().toLowerCase();
                 if (inp.charAt(0) == 'y') {
-                    dicesKeep[i] = dicesRolled[i];
+                    dicesKeep[i - 1] = dicesRolled[i];
                 } else {
-                    dicesKeep[i] = 0;
+                    dicesKeep[i - 1] = 0;
                 }
             }
 
@@ -148,7 +152,7 @@ public class Turn {
         return tutto;
     }
 
-    public boolean getNullRound(){
+    public boolean getNullRound() {
         return nullRound;
     }
 

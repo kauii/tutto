@@ -31,7 +31,7 @@ public class Printer {
 
         // print dice nr
         msg.append("Dice:  ");
-        for (int i = 0; i <= counter; i++) {
+        for (int i = 1; i <= counter; i++) {
             msg.append(i);
             msg.append(" ");
         }
