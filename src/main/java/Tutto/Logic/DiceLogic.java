@@ -1,5 +1,7 @@
 package Tutto.Logic;
 
+import java.util.ArrayList;
+
 public class DiceLogic {
 
     public boolean validateKeep(int[] toCheck) {
@@ -120,4 +122,70 @@ public class DiceLogic {
         return keptDices.length >= 6;
     }
 
+    public int[] keepAll(int[] dicesRolled) {
+        ArrayList<Integer> toKeep = new ArrayList<>();
+        int i;
+
+        int n1 = 0;
+        int n2 = 0;
+        int n3 = 0;
+        int n4 = 0;
+        int n5 = 0;
+        int n6 = 0;
+
+        for (int dice : dicesRolled) {
+            switch (dice) {
+                case 1 -> n1++;
+                case 2 -> n2++;
+                case 3 -> n3++;
+                case 4 -> n4++;
+                case 5 -> n5++;
+                case 6 -> n6++;
+                default -> {
+                }
+            }
+        }
+
+        // check triplets
+        if (n2 % 3 == 0) {
+            for(i=0;i<n2/3;i++){
+                toKeep.add(2);
+            }
+        }
+        if (n3 % 3 == 0) {
+            for(i=0;i<n3/3;i++){
+                toKeep.add(3);
+            }
+        }
+        if (n4 % 3 == 0) {
+            for(i=0;i<n4/3;i++){
+                toKeep.add(4);
+            }
+        }
+        if (n6 % 3 == 0) {
+            for(i=0;i<n6/3;i++){
+                toKeep.add(6);
+            }
+        }
+
+        // check ones and fives
+        if (n1 > 0) {
+            for(i=0;i<n1/3;i++){
+                toKeep.add(1);
+            }
+            for(i=0;i<n1%3;i++){
+                toKeep.add(1);
+            }
+        }
+        if (n5 > 0) {
+            for(i=0;i<n5/3;i++){
+                toKeep.add(5);
+            }
+            for(i=0;i<n5%3;i++){
+                toKeep.add(5);
+            }
+        }
+
+        return toKeep.stream().mapToInt(a -> a).toArray();
+    }
 }

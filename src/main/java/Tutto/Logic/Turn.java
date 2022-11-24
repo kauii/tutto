@@ -7,15 +7,16 @@ public class Turn {
     private int points = 0;
     private int[] dicesKept;
     private boolean tutto = false;
+    private boolean nullRound=false;
     DiceSet diceSet = new DiceSet();
     Printer printer = new Printer();
     DiceLogic logic = new DiceLogic();
     Scanner scanner = new Scanner(System.in);
 
-    public Turn() {
+    public void Turn(String card) {
 
         boolean ending = false;
-        int[] checkKeep;
+        int[] toKeep;
         boolean isValid;
 
         while (!ending) {
@@ -26,22 +27,16 @@ public class Turn {
             if (!logic.validateNullRound(dicesRolled)) {
                 // if null round -> end
                 ending = true;
+                nullRound=true;
             } else {
                 // player chooses what dices to keep and validates the choice
-                do {
-
-                    // Decide what dice to keep
-                    checkKeep = keepInput(dicesRolled);
-                    // validation via DiceLogic
-                    isValid = logic.validateKeep(checkKeep);
-
-                } while (!isValid);
+                toKeep=decideKeep(card,dicesRolled);
 
                 // add points
-                points += logic.pointsKeep(checkKeep);
+                points += logic.pointsKeep(toKeep);
 
                 // add newly kept dices to dicesKept
-                dicesKept = concatenate(dicesKept, checkKeep);
+                dicesKept = concatenate(dicesKept, toKeep);
 
                 // check tutto
                 tutto = logic.isTutto(dicesKept);
@@ -50,8 +45,11 @@ public class Turn {
                 if (tutto) {
                     ending = true;
                 } else {
-                    // player decides what to do: R -> reroll; E -> ending
-                    ending = rerollInput();
+                    // Depending on cards, player can choose to end turn
+                    if(!card.equals("FIREWORKS")&&!card.equals("PLUSMINUS")&&!card.equals("CLOVERLEAF")){
+                        // player decides what to do: R -> reroll; E -> ending
+                        ending = rerollInput();
+                    }
                 }
             }
         }
@@ -59,6 +57,26 @@ public class Turn {
         // close Scanner
         scanner.close();
     }
+
+    private int[] decideKeep(String card,int[] dicesRolled){
+        int[] checkKeep;
+        boolean isValid;
+
+        if(!card.equals("FIREWORKS")) {
+
+            do {
+                // Decide what dice to keep
+                checkKeep = keepInput(dicesRolled);
+                // Validate via DiceLogic
+                isValid = logic.validateKeep(checkKeep);
+            } while (!isValid);
+        }else{
+            checkKeep=logic.keepAll(dicesRolled);
+        }
+
+        return checkKeep;
+    }
+
 
     private int[] concatenate(int[] a, int[] b) {
         int aLen = a.length;
@@ -128,6 +146,10 @@ public class Turn {
 
     public boolean getTutto() {
         return tutto;
+    }
+
+    public boolean getNullRound(){
+        return nullRound;
     }
 
 }
