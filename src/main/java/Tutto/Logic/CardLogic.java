@@ -8,11 +8,11 @@ public class CardLogic {
 
     public void checkCard(String card) {
         System.out.println(card);
-        //BONUS
-        //if (Objects.equals(card, "BONUS")) {
-            //int bonus = card.getBonus();
-            //score = bonusCard(bonus);
-        //}
+
+        if (Objects.equals(card.charAt(0), 'B')) {
+            int bonus = Integer.parseInt(card.substring(5));  // BONUS500 --> substring '500' turn to int 500
+            score = bonusCard(bonus);
+        }
         if (Objects.equals(card, "X2")) {
             score = doubleCard();
         }
