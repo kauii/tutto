@@ -19,7 +19,7 @@ public class StraightTurn extends Turn {
             printer.printTurn(dicesKept, dicesRolled, points);
 
             // check if null round via StraightLogic
-            if(!logic.validateNullRound(dicesRolled, dicesKept)) {
+            if(logic.validateNullRound(dicesRolled, dicesKept)) {
                 // if null round -> end
                 ending = true;
             } else {
