@@ -6,6 +6,8 @@ public class Printer {
         StringBuilder msg;
         int counter = 0;
 
+        System.out.println();
+        System.out.println("==================");
         // Print current points
         System.out.println("Current points: " + points);
 

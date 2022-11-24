@@ -1,11 +1,11 @@
 package Tutto.Logic;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Turn {
 
     private int points = 0;
-    private int[] dicesKept = {};
     private boolean tutto = false;
     private boolean nullRound = false;
     DiceSet diceSet = new DiceSet();
@@ -13,17 +13,19 @@ public class Turn {
     DiceLogic logic = new DiceLogic();
     Scanner scanner = new Scanner(System.in);
 
-    // default constructor for straight
+    // default constructor for straightLogic
     public Turn() {
 
     }
 
+    // Constructor
     public Turn(String card) {
 
         boolean ending = false;
         int[] toKeep;
 
         while (!ending) {
+            int[] dicesKept = {};
             int[] dicesRolled = diceSet.rollSet(6 - dicesKept.length);
             printer.printTurn(dicesKept, dicesRolled, points);
 
@@ -32,6 +34,7 @@ public class Turn {
                 // if null round -> end
                 ending = true;
                 nullRound = true;
+                System.out.println("NULLROUND");
             } else {
                 // player chooses what dices to keep and validates the choice
                 toKeep = decideKeep(card, dicesRolled);
@@ -73,6 +76,9 @@ public class Turn {
                 checkKeep = keepInput(dicesRolled);
                 // Validate via DiceLogic
                 isValid = logic.validateKeep(checkKeep);
+                if (!isValid) {
+                    System.out.println("Invalid choice. Choose again!");
+                }
             } while (!isValid);
         } else {
             checkKeep = logic.keepAll(dicesRolled);
@@ -82,7 +88,7 @@ public class Turn {
     }
 
 
-    protected int[] concatenate(int[] a, int[] b) {
+    public int[] concatenate(int[] a, int[] b) {
         int aLen = a.length;
         int bLen = b.length;
         int[] con = new int[aLen + bLen];
@@ -94,7 +100,7 @@ public class Turn {
 
     protected int[] keepInput(int[] dicesRolled) {
         String inp;
-        int[] dicesKeep = new int[dicesRolled.length];
+        ArrayList<Integer> dicesKeep = new ArrayList<>();
         boolean tryAgain;
 
         do {
@@ -104,9 +110,7 @@ public class Turn {
                 System.out.println("Y - Yes | N - No");
                 inp = scanner.nextLine().toLowerCase();
                 if (inp.charAt(0) == 'y') {
-                    dicesKeep[i - 1] = dicesRolled[i];
-                } else {
-                    dicesKeep[i - 1] = 0;
+                    dicesKeep.add(dicesRolled[i - 1]);
                 }
             }
 
@@ -122,7 +126,7 @@ public class Turn {
 
         } while (!tryAgain);
 
-        return dicesKeep;
+        return dicesKeep.stream().mapToInt(a -> a).toArray();
     }
 
     private boolean rerollInput() {
