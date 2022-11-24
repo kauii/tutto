@@ -13,13 +13,8 @@ public class Turn {
     DiceLogic logic = new DiceLogic();
     Scanner scanner = new Scanner(System.in);
 
-    // default constructor for straightLogic
-    public Turn() {
-
-    }
-
     // Constructor
-    public Turn(String card) {
+    public void nextTurn(String card) {
 
         boolean ending = false;
         int[] toKeep;

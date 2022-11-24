@@ -35,7 +35,8 @@ public class CardLogic {
 
     //BONUS - RULE
     private int bonusCard(int bonus) {
-        Turn turn = new Turn("BONUS");
+        Turn turn = new Turn();
+        turn.nextTurn("BONUS");
         tutto = turn.getTutto();
         score = turn.getTurnPoints();
 
@@ -47,7 +48,8 @@ public class CardLogic {
 
     //DOUBLE - RULE
     private int doubleCard() {
-        Turn turn = new Turn("DOUBLE");
+        Turn turn = new Turn();
+        turn.nextTurn("DOUBLE");
         tutto = turn.getTutto();
         score = turn.getTurnPoints();
 
@@ -59,13 +61,15 @@ public class CardLogic {
 
     //FIREWORKS - RULE
     private int fireworksCard() {
-        Turn turn = new Turn("FIREWORKS"); // TODO: turn must change: player MUST keep all valid single dice and triplets, continue till null
+        Turn turn = new Turn(); // TODO: turn must change: player MUST keep all valid single dice and triplets, continue till null
+        turn.nextTurn("FIREWORKS");
         return 0;
     }
 
     //PLUS/MINUS - RULE
     private int plusminusCard() { //TODO: may not stop until tutto
-        Turn turn = new Turn("PLUSMINUS");
+        Turn turn = new Turn();
+        turn.nextTurn("PLUSMINUS");
         tutto = turn.getTutto();
         if (tutto) {
             return 1000;
@@ -75,10 +79,12 @@ public class CardLogic {
 
     //CLOVERLEAF - RULE
     private int cloverCard() {
-        Turn turn1 = new Turn("CLOVERLEAF");    //TODO: may not stop until tutto
+        Turn turn1 = new Turn();    //TODO: may not stop until tutto
+        turn1.nextTurn("CLOVERLEAF");
         tutto = turn1.getTutto();
         if(tutto) {
-            Turn turn2 = new Turn("CLOVERLEAF");
+            Turn turn2 = new Turn();
+            turn2.nextTurn("CLOVERLEAF");
             tutto = turn2.getTutto();
             if(tutto) {
                 return 999999999;
