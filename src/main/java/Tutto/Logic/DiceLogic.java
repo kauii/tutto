@@ -125,6 +125,7 @@ public class DiceLogic {
     public int[] keepAll(int[] dicesRolled) {
         ArrayList<Integer> toKeep = new ArrayList<>();
         int i;
+        int j;
 
         int n1 = 0;
         int n2 = 0;
@@ -147,38 +148,38 @@ public class DiceLogic {
         }
 
         // check triplets
-        if (n2 % 3 == 0) {
-            for (i = 0; i < n2; i++) {
+        for (i = 0; i < n2 / 3; i++) {
+            for (j = 0; j < 3; j++) {
                 toKeep.add(2);
             }
         }
-        if (n3 % 3 == 0) {
-            for (i = 0; i < n3; i++) {
+
+        for (i = 0; i < n3 / 3; i++) {
+            for (j = 0; j < 3; j++) {
                 toKeep.add(3);
             }
         }
-        if (n4 % 3 == 0) {
-            for (i = 0; i < n4; i++) {
+
+        for (i = 0; i < n4 / 3; i++) {
+            for (j = 0; j < 3; j++) {
                 toKeep.add(4);
             }
         }
-        if (n6 % 3 == 0) {
-            for (i = 0; i < n6; i++) {
+
+        for (i = 0; i < n6 / 3; i++) {
+            for (j = 0; j < 3; j++) {
                 toKeep.add(6);
             }
         }
 
         // check ones and fives
-        if (n1 > 0) {
-            for (i = 0; i < n1; i++) {
-                toKeep.add(1);
-            }
+        for (i = 0; i < n1; i++) {
+            toKeep.add(1);
         }
-        if (n5 > 0) {
-            for (i = 0; i < n5; i++) {
-                toKeep.add(5);
-            }
+        for (i = 0; i < n5; i++) {
+            toKeep.add(5);
         }
+
 
         return toKeep.stream().mapToInt(a -> a).toArray();
     }

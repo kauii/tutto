@@ -74,4 +74,9 @@ class DiceLogicTest {
         assertTrue(logic.isTutto(new int[]{2, 3, 5, 6, 2, 1}));
         assertFalse(logic.isTutto(new int[]{1, 3}));
     }
+
+    @Test
+    void keepAll(){
+
+    }
 }
