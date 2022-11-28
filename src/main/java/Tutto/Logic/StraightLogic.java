@@ -33,13 +33,13 @@ public class StraightLogic extends DiceLogic {
 
     public boolean validateNullRound(int[] dicesRolled, int[] dicesKept) {
         int count = 0;
-        for (int dice1: dicesRolled) {
-            for (int dice2: dicesKept) {
+        for (int dice1: dicesKept) {
+            for (int dice2: dicesRolled) {
                 if (dice1 == dice2) {
                     count++;
                 }
             }
         }
-        return count != dicesRolled.length;
+        return count == dicesRolled.length;
     }
 }

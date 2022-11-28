@@ -61,9 +61,15 @@ public class CardLogic {
 
     //FIREWORKS - RULE
     private int fireworksCard() {
-        Turn turn = new Turn(); // TODO: turn must change: player MUST keep all valid single dice and triplets, continue till null
+        Turn turn = new Turn();
         turn.nextTurn("FIREWORKS");
-        return 0;
+        tutto = turn.getTutto();
+        score = turn.getTurnPoints();
+        if (tutto) {
+            turn.nextTurn("FIREWORKS");
+            score += turn.getTurnPoints();
+        }
+        return score;
     }
 
     //PLUS/MINUS - RULE
