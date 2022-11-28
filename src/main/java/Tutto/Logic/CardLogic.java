@@ -62,18 +62,16 @@ public class CardLogic {
     //FIREWORKS - RULE
     private int fireworksCard() {
         Turn turn = new Turn();
-        turn.nextTurn("FIREWORKS");
-        tutto = turn.getTutto();
-        score = turn.getTurnPoints();
-        if (tutto) {
+        do {
             turn.nextTurn("FIREWORKS");
-            score += turn.getTurnPoints();
-        }
-        return score;
+            tutto = turn.getTutto();
+        } while (tutto);
+        System.out.println(turn.getTurnPoints());
+        return turn.getTurnPoints();
     }
 
     //PLUS/MINUS - RULE
-    private int plusminusCard() { //TODO: may not stop until tutto
+    private int plusminusCard() {
         Turn turn = new Turn();
         turn.nextTurn("PLUSMINUS");
         tutto = turn.getTutto();
@@ -85,7 +83,7 @@ public class CardLogic {
 
     //CLOVERLEAF - RULE
     private int cloverCard() {
-        Turn turn1 = new Turn();    //TODO: may not stop until tutto
+        Turn turn1 = new Turn();
         turn1.nextTurn("CLOVERLEAF");
         tutto = turn1.getTutto();
         if(tutto) {
