@@ -110,15 +110,22 @@ public class Turn {
                 }
             }
 
-            // ask to confirm the selection
-            System.out.println("Confirm selection:");
-            System.out.println("Y - Yes | N - No");
-            for (int value : dicesKeep) {
-                System.out.printf("%d ", value);
+            // Check if at least one element in list
+            if (dicesKeep.size() == 0) {
+                System.out.println("No dice selected. Try again!");
+                tryAgain = true;
+            } else {
+
+                // ask to confirm the selection
+                System.out.println("Confirm selection:");
+                System.out.println("Y - Yes | N - No");
+                for (int value : dicesKeep) {
+                    System.out.printf("%d ", value);
+                }
+                System.out.println();
+                inp = scanner.nextLine().toLowerCase();
+                tryAgain = inp.charAt(0) == 'y';
             }
-            System.out.println();
-            inp = scanner.nextLine().toLowerCase();
-            tryAgain = inp.charAt(0) == 'y';
 
         } while (!tryAgain);
 
