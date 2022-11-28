@@ -18,9 +18,9 @@ public class Turn {
 
         boolean ending = false;
         int[] toKeep;
+        int[] dicesKept = {};
 
         while (!ending) {
-            int[] dicesKept = {};
             int[] dicesRolled = diceSet.rollSet(6 - dicesKept.length);
             printer.printTurn(dicesKept, dicesRolled, points);
 
@@ -45,6 +45,7 @@ public class Turn {
 
                 // check tutto
                 if (tutto) {
+                    printer.printTurn(dicesKept, dicesRolled, points);
                     ending = true;
                 } else {
                     // Depending on cards, player can choose to end turn
