@@ -44,10 +44,10 @@ public class Input {
     }
 
     public int getTarget() {
-        int target = 6500;
+        int target;
 
         System.out.println("Enter the target score (Recommended: 6500):");
-        target = scanner.nextInt();  // TODO: Default + error
+        target = scanner.nextInt(); // TODO: Default + error
         scanner.nextLine();
 
         return target;
