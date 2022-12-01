@@ -1,28 +1,22 @@
 package Tutto;
 
-import java.util.ArrayList;
-
 public class Player {
-    public int Score = 0;
-    private String Name;
+    private final String name;
+    private int score = 0;
 
-    public Player(){
-        Name = Input.GetPlayerName();
+    public Player(String name) {
+        this.name = name;
     }
-    public void play(Deck deck, Game game){
-        int points = 0;
-        boolean turnEnded = false;
 
-        while (!turnEnded){
-            // ui.showPlayers
-            Card card = deck.pullRandom();
-            // ui.showCard()
+    public String getName() {
+        return name;
+    }
 
-            ArrayList<Die> dice = Dice.roll();
+    public int getScore() {
+        return score;
+    }
 
-            points += card.Handle(game, this, dice)
-
-        }
-        score += points
+    public void addScore(int points) {
+        score += points;
     }
 }

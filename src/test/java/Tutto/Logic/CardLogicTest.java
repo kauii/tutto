@@ -25,7 +25,7 @@ class CardLogicTest {
     @Test
     void checkCard() {
 
-        cLogic.checkCard("STOP");
+        cLogic.checkCard(new Card(Rank.STOP));
         assert (cLogic.score == 0);
 
     }

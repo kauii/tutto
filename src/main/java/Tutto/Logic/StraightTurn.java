@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class StraightTurn extends Turn {
 
     private int points = 0;
-    private int[] dicesKept={};
+    private int[] dicesKept = {};
     StraightLogic logic = new StraightLogic();
     Scanner scanner = new Scanner(System.in);
+
     @Override
     public void nextTurn(String card) {
 
@@ -15,12 +16,12 @@ public class StraightTurn extends Turn {
         int[] checkKeep;
         boolean isValid;
 
-        while(!ending) {
-            int[] dicesRolled = diceSet.rollSet(6-dicesKept.length);
+        while (!ending) {
+            int[] dicesRolled = diceSet.rollSet(6 - dicesKept.length);
             printer.printTurn(dicesKept, dicesRolled, points);
 
             // check if null round via StraightLogic
-            if(logic.validateNullRound(dicesRolled, dicesKept)) {
+            if (logic.validateNullRound(dicesRolled, dicesKept)) {
                 // if null round -> end
                 ending = true;
             } else {
@@ -28,7 +29,7 @@ public class StraightTurn extends Turn {
                 do {
 
                     // Decide what dice to keep
-                    checkKeep =  keepInput(dicesRolled);  // TODO: either protected instead private or create keepInput again?
+                    checkKeep = keepInput(dicesRolled);  // TODO: either protected instead private or create keepInput again?
                     // validation via DiceLogic
                     isValid = logic.validateKeep(checkKeep);
                 } while (!isValid);
@@ -46,8 +47,5 @@ public class StraightTurn extends Turn {
                 }
             }
         }
-
-        // close Scanner
-        scanner.close();
     }
 }

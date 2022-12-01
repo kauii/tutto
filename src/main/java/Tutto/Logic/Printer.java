@@ -1,5 +1,9 @@
 package Tutto.Logic;
 
+import Tutto.Player;
+
+import java.util.ArrayList;
+
 public class Printer {
 
     public void printTurn(int[] dicesKept, int[] dicesRolled, int points) {
@@ -32,7 +36,7 @@ public class Printer {
         msg.setLength(0);
 
         // print dice nr
-        msg.append("Dice:  ");
+        msg.append("Index: ");
         for (int i = 1; i <= counter; i++) {
             msg.append(i);
             msg.append(" ");
@@ -41,6 +45,16 @@ public class Printer {
 
         System.out.println();
 
+    }
+
+    public void printScoreboard(ArrayList<Player> players) {
+        System.out.println("\n\n");
+        System.out.println("===== Scoreboard =====");
+        for (Player player : players) {
+            System.out.printf("%-20s", player.getName());
+            System.out.println(player.getScore());
+        }
+        System.out.println("======================\n\n");
     }
 
 }

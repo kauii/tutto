@@ -1,6 +1,5 @@
 package Tutto.Logic;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Turn {
@@ -56,9 +55,6 @@ public class Turn {
                 }
             }
         }
-
-        // close Scanner
-        scanner.close();
     }
 
     private int[] decideKeep(String card, int[] dicesRolled) {
@@ -95,23 +91,16 @@ public class Turn {
     }
 
     protected int[] keepInput(int[] dicesRolled) {
+        Input in = new Input();
         String inp;
-        ArrayList<Integer> dicesKeep = new ArrayList<>();
+        int[] dicesKeep;
         boolean tryAgain;
 
         do {
-            // iterate through rolled dices and ask if to keep
-            for (int i = 1; i <= dicesRolled.length; i++) {
-                System.out.printf("Keep dice No. %d?\n", i);
-                System.out.println("Y - Yes | N - No");
-                inp = scanner.nextLine().toLowerCase();
-                if (inp.charAt(0) == 'y') {
-                    dicesKeep.add(dicesRolled[i - 1]);
-                }
-            }
+            dicesKeep = in.getDicesKeep(dicesRolled);
 
             // Check if at least one element in list
-            if (dicesKeep.size() == 0) {
+            if (dicesKeep.length == 0) {
                 System.out.println("No dice selected. Try again!");
                 tryAgain = true;
             } else {
@@ -129,7 +118,7 @@ public class Turn {
 
         } while (!tryAgain);
 
-        return dicesKeep.stream().mapToInt(a -> a).toArray();
+        return dicesKeep;
     }
 
     private boolean rerollInput() {

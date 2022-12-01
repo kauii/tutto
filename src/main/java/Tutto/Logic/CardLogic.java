@@ -7,7 +7,8 @@ public class CardLogic {
     boolean tutto;
 
     public void checkCard(Card card) {
-        System.out.println(card.getRank());
+        System.out.println("==================");
+        System.out.println("Card: " + card.getRank());
 
         if (card.equals(new Card(BONUS600))) {
             score = bonusCard(600);
@@ -43,6 +44,8 @@ public class CardLogic {
         if (card.equals(new Card(STRAIGHT))) {
             score = straightCard();
         }
+
+        System.out.println("You scored: " + score);
     }
 
     //BONUS - RULE
@@ -52,7 +55,7 @@ public class CardLogic {
         tutto = turn.getTutto();
         score = turn.getTurnPoints();
 
-        if(tutto) {
+        if (tutto) {
             return score + bonus;
         }
         return score;
@@ -65,7 +68,7 @@ public class CardLogic {
         tutto = turn.getTutto();
         score = turn.getTurnPoints();
 
-        if(tutto) {
+        if (tutto) {
             return score * 2;
         }
         return score;
@@ -98,11 +101,11 @@ public class CardLogic {
         Turn turn1 = new Turn();
         turn1.nextTurn("CLOVERLEAF");
         tutto = turn1.getTutto();
-        if(tutto) {
+        if (tutto) {
             Turn turn2 = new Turn();
             turn2.nextTurn("CLOVERLEAF");
             tutto = turn2.getTutto();
-            if(tutto) {
+            if (tutto) {
                 return 999999999;
             }
         }
@@ -121,6 +124,8 @@ public class CardLogic {
         return score;
     }
 
-    public boolean getTutto() { return tutto;}
+    public boolean getTutto() {
+        return tutto;
+    }
 
 }

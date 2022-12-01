@@ -3,7 +3,6 @@ package Tutto.Logic;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -79,13 +78,13 @@ class DiceLogicTest {
     }
 
     @Test
-    void keepAll(){
+    void keepAll() {
         assert (Arrays.equals(logic.keepAll(new int[]{1, 2, 2, 2, 2, 2}), new int[]{2, 2, 2, 1}));
-        assert (Arrays.equals(logic.keepAll(new int[]{1,1,1,1}), new int[]{1,1,1,1}));
-        assert (Arrays.equals(logic.keepAll(new int[]{1,2,3,4,6}), new int[]{1}));
+        assert (Arrays.equals(logic.keepAll(new int[]{1, 1, 1, 1}), new int[]{1, 1, 1, 1}));
+        assert (Arrays.equals(logic.keepAll(new int[]{1, 2, 3, 4, 6}), new int[]{1}));
         assert (Arrays.equals(logic.keepAll(new int[]{1}), new int[]{1}));
-        assert (Arrays.equals(logic.keepAll(new int[]{5,5,5,5,5}), new int[]{5,5,5,5,5}));
-        assert (Arrays.equals(logic.keepAll(new int[]{4,4,4,6,6,6}), new int[]{4,4,4,6,6,6}));
+        assert (Arrays.equals(logic.keepAll(new int[]{5, 5, 5, 5, 5}), new int[]{5, 5, 5, 5, 5}));
+        assert (Arrays.equals(logic.keepAll(new int[]{4, 4, 4, 6, 6, 6}), new int[]{4, 4, 4, 6, 6, 6}));
 
     }
 }
