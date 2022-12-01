@@ -1,34 +1,46 @@
 package Tutto.Logic;
 
-import java.util.Objects;
+import static Tutto.Logic.Rank.*;
 
 public class CardLogic {
     int score;
     boolean tutto;
 
-    public void checkCard(String card) {
-        System.out.println(card);
+    public void checkCard(Card card) {
+        System.out.println(card.getRank());
 
-        if (Objects.equals(card.charAt(0), 'B')) {
-            int bonus = Integer.parseInt(card.substring(5));  // BONUS500 --> substring '500' turn to int 500
-            score = bonusCard(bonus);
+        if (card.equals(new Card(BONUS600))) {
+            score = bonusCard(600);
         }
-        if (Objects.equals(card, "X2")) {
+        if (card.equals(new Card(BONUS500))) {
+            score = bonusCard(500);
+        }
+        if (card.equals(new Card(BONUS400))) {
+            score = bonusCard(400);
+        }
+        if (card.equals(new Card(BONUS300))) {
+            score = bonusCard(300);
+        }
+        if (card.equals(new Card(BONUS200))) {
+            score = bonusCard(200);
+        }
+
+        if (card.equals(new Card(X2))) {
             score = doubleCard();
         }
-        if (Objects.equals(card, "STOP")) {
+        if (card.equals(new Card(STOP))) {
             score = 0;
         }
-        if (Objects.equals(card, "FIREWORKS")) {
+        if (card.equals(new Card(FIREWORKS))) {
             score = fireworksCard();
         }
-        if (Objects.equals(card, "PLUSMINUS")) {
+        if (card.equals(new Card(PLUSMINUS))) {
             score = plusminusCard();
         }
-        if (Objects.equals(card, "CLOVERLEAF")) {
+        if (card.equals(new Card(CLOVERLEAF))) {
             score = cloverCard();
         }
-        if (Objects.equals(card, "STRAIGHT")) {
+        if (card.equals(new Card(STRAIGHT))) {
             score = straightCard();
         }
     }
@@ -99,7 +111,8 @@ public class CardLogic {
 
     //STRAIGHT - RULE
     private int straightCard() {
-        StraightTurn turn = new StraightTurn("STRAIGHT");
+        StraightTurn turn = new StraightTurn();
+        turn.nextTurn("STRAIGHT");
         score = turn.getTurnPoints();
         return score;
     }
@@ -107,5 +120,7 @@ public class CardLogic {
     public int getScore() {
         return score;
     }
+
+    public boolean getTutto() { return tutto;}
 
 }
