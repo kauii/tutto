@@ -44,7 +44,8 @@ public class Turn {
 
                 // check tutto
                 if (tutto) {
-                    printer.printTurn(dicesKept, dicesRolled, points);
+                    //printer.printTurn(dicesKept, dicesRolled, points);
+                    System.out.println("\n\nTUTTO!!!");
                     ending = true;
                 } else {
                     // Depending on cards, player can choose to end turn
