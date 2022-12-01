@@ -1,5 +1,7 @@
 package Tutto.Logic;
 
+import java.util.Objects;
+
 public class Card {
     private Rank mRank;
 
@@ -13,7 +15,12 @@ public class Card {
     
     @Override
     public boolean equals(Object o) {
-        return (o != null && o instanceof Card && ((Card) o).mRank == mRank);
+        return (o instanceof Card && ((Card) o).mRank == mRank);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(mRank);
     }
 
 }
