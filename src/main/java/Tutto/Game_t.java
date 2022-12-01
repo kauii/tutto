@@ -46,20 +46,21 @@ public class Game {
 
     }
 }
-public ArrayList<Player> getPlayers() {
-    return players;
-}
-public void setPlayers(ArrayList<Player> players){
-    this.players = players;
-}
-private void nextPlayer(){
-    if(CurrentPlayer == null)
-        CurrentPlayer = players.get(0);
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+    public void setPlayers(ArrayList<Player> players){
+        this.players = players;
+    }
+    private void nextPlayer(){
+        if(CurrentPlayer == null)
+            CurrentPlayer = players.get(0);
 
-    int curIndex = players.indexOF(CurrentPlayer);
-    if(curIndex) >= players.size() - 1
-        curIndex = 0;
-    else
-        curIndex++;
-    CurrentPlayer = players.get(curIndex)
-}    
+        int curIndex = players.indexOF(CurrentPlayer);
+        if(curIndex) >= players.size() - 1
+            curIndex = 0;
+        else
+            curIndex++;
+        CurrentPlayer = players.get(curIndex)
+    }
+}
