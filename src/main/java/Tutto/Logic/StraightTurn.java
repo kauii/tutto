@@ -8,7 +8,8 @@ public class StraightTurn extends Turn {
     private int[] dicesKept={};
     StraightLogic logic = new StraightLogic();
     Scanner scanner = new Scanner(System.in);
-    public StraightTurn(String card) {
+    @Override
+    public void nextTurn(String card) {
 
         boolean ending = false;
         int[] checkKeep;
