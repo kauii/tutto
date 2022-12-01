@@ -44,7 +44,12 @@ public Card pullRandom() {
 	    if (mCards.isEmpty())
 	        return null;
 	    Random randint = new Random();
-	    Card res = mCards.remove(randint.nextInt(mCards.size() - 1));
+	    Card res;
+	    if (mCards.size()==1) {
+		    res = mCards.remove(0);
+	    } else {
+		    res = mCards.remove(randint.nextInt(mCards.size() - 1));
+	    }
 	    if (res != null)
 	        mPulledCards.add(res);
 	    return res;
@@ -59,7 +64,11 @@ public Card pullRandom() {
 	        return null;
 
 	    Random randint = new Random();
-	    Card res = mCards.get(randint.nextInt(0, mCards.size() - 1));
+	    if (mCards.size()==1) {
+		    Card res = mCards.remove(0);
+	    } else {
+		    Card res = mCards.remove(randint.nextInt(mCards.size() - 1));
+	    }
 	    return res;
 	}
 	
