@@ -24,7 +24,8 @@ public class Input {
             for (int i = 0; i < names.length; i++) {
                 try {
                     names[i] = names[i].substring(0, 15);
-                } catch (StringIndexOutOfBoundsException ignored) {}
+                } catch (StringIndexOutOfBoundsException ignored) {
+                }
             }
 
             // Sort names alphabetically
@@ -111,8 +112,8 @@ public class Input {
         System.out.println();
         System.out.println("############################################");
         System.out.println("It's the turn of " + name);
-        System.out.println("Do you want to print the scoreboard?");
-        System.out.println("Y - Yes | N - No");
+        System.out.println("Do you want to display the scoreboard?");
+        System.out.println("D - Display | R - Roll");
 
         do {
             // Catch errors
@@ -126,7 +127,7 @@ public class Input {
         } while (!valid);
 
         // If inp=='y' -> true, else false
-        printScore = inp == 'y';
+        printScore = inp == 'd';
 
         return printScore;
     }
