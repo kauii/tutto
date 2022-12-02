@@ -49,12 +49,12 @@ public class Printer {
 
     public void printScoreboard(ArrayList<Player> players) {
         System.out.println("\n\n");
-        System.out.println("===== Scoreboard =====");
+        System.out.println("====== Scoreboard ======");
         for (Player player : players) {
             System.out.printf("%-20s", player.getName());
             System.out.println(player.getScore());
         }
-        System.out.println("======================\n\n");
+        System.out.println("========================\n\n");
     }
 
 }
