@@ -21,25 +21,25 @@ public class Input {
             names = line.split(",");
 
             // Limit name length to 15
-            for(int i=0;i< names.length;i++){
+            for (int i = 0; i < names.length; i++) {
                 try {
                     names[i] = names[i].substring(0, 15);
-                }catch (StringIndexOutOfBoundsException ignored){}
+                } catch (StringIndexOutOfBoundsException ignored) {}
             }
 
             // Sort names alphabetically
             Arrays.sort(names);
 
             // Check between 2-4 Players
-            if(names.length<2||names.length>4){
-                valid=false;
+            if (names.length < 2 || names.length > 4) {
+                valid = false;
                 System.out.println("You need between 2 and 4 players!\nEnter names again:");
-            }else{
-                valid=true;
+            } else {
+                valid = true;
             }
-            
+
             // Check duplicate names
-            if(valid) {
+            if (valid) {
                 HashSet<Object> set = new HashSet<>();
                 for (String name : names) {
                     if (!set.add(name)) {
@@ -49,8 +49,8 @@ public class Input {
                     }
                 }
             }
-        }while(!valid);
-        
+        } while (!valid);
+
         return names;
     }
 
@@ -59,7 +59,7 @@ public class Input {
         String[] dices;
         int size;
         int[] res = new int[0];
-        boolean valid=true;
+        boolean valid = true;
 
         System.out.println("Enter index of dices to keep (separated by a comma \",\"):");
         do {
@@ -74,18 +74,18 @@ public class Input {
                 res = new int[size];
                 for (int i = 0; i < size; i++) {
                     res[i] = dicesRolled[Integer.parseInt(dices[i]) - 1];
-                    valid=true;
+                    valid = true;
                 }
             } catch (ArrayIndexOutOfBoundsException exception) {
                 System.out.println("Enter valid indices!\nTry again:");
-                valid=false;
+                valid = false;
             }
-        }while(!valid);
+        } while (!valid);
         return res;
     }
 
     public int getTarget() {
-        int target=6500;
+        int target = 6500;
         boolean valid;
 
         System.out.println("Enter the target score (Recommended: 6500):");
@@ -99,14 +99,14 @@ public class Input {
                 valid = false;
             }
             scanner.nextLine();     // Finish line scan
-        }while(!valid);
+        } while (!valid);
         return target;
     }
 
     public boolean getPlayChoice(String name) {
         boolean printScore;
         boolean valid;
-        char inp='n';
+        char inp = 'n';
 
         System.out.println();
         System.out.println("############################################");
@@ -118,12 +118,12 @@ public class Input {
             // Catch errors
             try {
                 inp = scanner.nextLine().toLowerCase().charAt(0);
-                valid=true;
+                valid = true;
             } catch (StringIndexOutOfBoundsException exception) {
                 System.out.println("Invalid argument. Try again.");
-                valid=false;
+                valid = false;
             }
-        }while(!valid);
+        } while (!valid);
 
         // If inp=='y' -> true, else false
         printScore = inp == 'y';
