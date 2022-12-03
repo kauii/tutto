@@ -22,6 +22,7 @@ public class Input {
 
             // Limit name length to 15
             for (int i = 0; i < names.length; i++) {
+                // TODO: Trim string
                 try {
                     names[i] = names[i].substring(0, 15);
                 } catch (StringIndexOutOfBoundsException ignored) {
@@ -130,6 +131,34 @@ public class Input {
         printScore = inp == 'd';
 
         return printScore;
+    }
+
+    public boolean continueTutto(){
+        boolean retry;
+        boolean valid;
+        char inp = 'n';
+
+        System.out.println();
+        System.out.println("############################################");
+        System.out.println("You scored a TUTTO!");
+        System.out.println("Do you want to draw a new card?");
+        System.out.println("Y - Yes | N - No");
+
+        do {
+            // Catch errors
+            try {
+                inp = scanner.nextLine().toLowerCase().charAt(0);
+                valid = true;
+            } catch (StringIndexOutOfBoundsException exception) {
+                System.out.println("Invalid argument. Try again.");
+                valid = false;
+            }
+        } while (!valid);
+
+        // If inp=='y' -> true, else false
+        retry = inp == 'y';
+
+        return retry;
     }
 
     public void close() {
