@@ -3,13 +3,14 @@ package Tutto;
 import Tutto.Logic.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Game {
-    private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
     private final Deck deck;
     Input in = new Input();
     private final int playerAmount;
-    private int targetScore;
+    private final int targetScore;
 
     public Game() {
         String[] playerNames;
@@ -51,23 +52,37 @@ public class Game {
             scoreboard = in.getPlayChoice(players.get(activePlayer).getName());
             if (scoreboard) {
                 printer.printScoreboard(players);
+                in.enterContinue();
             }
 
             // Play -> draw card -> play round
             // Try to draw card from deck
-            try {
-                card = deck.pullRandom();
-            } catch (IllegalStateException exception) {
-                deck.reset();
-                card = deck.pullRandom();
-            }
+            card = drawCard();
 
             // Play round
             cLogic = new CardLogic();
             cLogic.checkCard(card);
 
-            // Depending on card: directly won, add points, subtract points
+            // Save points
             points = cLogic.getScore();
+
+            //If tutto, decide stop or continue
+            while (cLogic.getTutto() && !card.equals(new Card(Rank.CLOVERLEAF)) && !card.equals(new Card(Rank.PLUSMINUS)) && !card.equals(new Card(Rank.FIREWORKS))) {
+
+                // Ask player if he wants to continue
+                if (in.getContinue()) {
+                    card = drawCard();
+                    cLogic.setScore(points); // old points
+                    cLogic.checkCard(card);
+                    if (cLogic.getScore() == 0) {
+                        points = 0;
+                    } else { points += cLogic.getScore(); }
+                } else {
+                    break;
+                }
+            }
+
+            // Depending on card: directly won, add points, subtract points
             players.get(activePlayer).addScore(points);
 
             // Check if PlusMinus and if player won
@@ -75,7 +90,8 @@ public class Game {
                 // Find player with the highest score
                 leader = findLeader();
                 // If player with the highest score != active player -> subtract 1000 points
-                if (!findLeader().equals(players.get(activePlayer)) && findLeader() != null) {
+                if (!Objects.equals(findLeader(), players.get(activePlayer)) && findLeader() != null) {
+                    assert leader != null;
                     leader.addScore(-1000);
                 }
             }
@@ -115,5 +131,16 @@ public class Game {
             return null;
         }
         return players.get(activeLeader);
+    }
+
+    private Card drawCard() {
+        Card card;
+        try {
+            card = deck.pullRandom();
+        } catch (IllegalStateException exception) {
+            deck.reset();
+            card = deck.pullRandom();
+        }
+        return card;
     }
 }

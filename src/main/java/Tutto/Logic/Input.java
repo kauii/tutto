@@ -132,6 +132,40 @@ public class Input {
         return printScore;
     }
 
+    public void enterContinue() {
+        System.out.println("Enter any key to continue...");
+        scanner.nextLine();
+    }
+
+    public boolean getContinue() {
+        boolean con;
+        boolean valid;
+        char inp = 'n';
+
+        System.out.println("Do you want to stop or continue?");
+        System.out.println("S - Stop | C - Continue");
+
+        do {
+            // Catch errors
+            try {
+                inp = scanner.nextLine().toLowerCase().charAt(0);
+                if (inp == 'c' || inp == 's') {
+                    valid = true;
+                } else {
+                    System.out.println("Invalid argument. Try again.");
+                    valid = false;
+                }
+            } catch (StringIndexOutOfBoundsException exception) {
+                System.out.println("Invalid argument. Try again.");
+                valid = false;
+            }
+        } while (!valid);
+
+        return inp == 'c';
+    }
+
+
+
     public void close() {
         // Close scanner at end of program
         scanner.close();

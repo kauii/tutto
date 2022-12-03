@@ -30,6 +30,8 @@ public class CardLogic {
             score = doubleCard();
         }
         if (card.equals(new Card(STOP))) {
+            System.out.println("Tough luck!");
+            tutto = false;
             score = 0;
         }
         if (card.equals(new Card(FIREWORKS))) {
@@ -53,7 +55,7 @@ public class CardLogic {
         Turn turn = new Turn();
         turn.nextTurn("BONUS");
         tutto = turn.getTutto();
-        score = turn.getTurnPoints();
+        score += turn.getTurnPoints();
 
         if (tutto) {
             return score + bonus;
@@ -66,7 +68,7 @@ public class CardLogic {
         Turn turn = new Turn();
         turn.nextTurn("DOUBLE");
         tutto = turn.getTutto();
-        score = turn.getTurnPoints();
+        score += turn.getTurnPoints();
 
         if (tutto) {
             return score * 2;
@@ -116,7 +118,7 @@ public class CardLogic {
     private int straightCard() {
         StraightTurn turn = new StraightTurn();
         turn.nextTurn("STRAIGHT");
-        score = turn.getTurnPoints();
+        score += turn.getTurnPoints();
         return score;
     }
 
@@ -127,5 +129,10 @@ public class CardLogic {
     public boolean getTutto() {
         return tutto;
     }
+
+    public void setScore(int pScore) {
+        score = pScore;
+    }
+
 
 }

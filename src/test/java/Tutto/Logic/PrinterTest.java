@@ -30,6 +30,6 @@ class PrinterTest {
     @Test
     void printTurn() {
         printer.printTurn(new int[]{1,2}, new int[]{5,3,2,1}, 500);
-        assertEquals("\r\n==================\r\nCurrent points: 500\r\n=== Kept Dices ===\r\n1 2 \r\n=== Rolled Dices ===\r\nValue: 5 3 2 1 \r\nIndex: 1 2 3 4 \r\n\r\n" , outContent.toString());
+        assertEquals("\r\n==================\r\nCurrent points: 500\r\n=== Kept Dices ===\r\n1 2 \r\n=== Rolled Dices ===\r\nValue: 5 3 2 1 \r\nIndex: 1 2 3 4 \r\n\r\n", outContent.toString());
     }
 }

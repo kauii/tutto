@@ -1,13 +1,14 @@
 package Tutto.Logic;
 
-import java.util.Scanner;
+
 
 public class StraightTurn extends Turn {
 
     private int points = 0;
+
     private int[] dicesKept = {};
     StraightLogic logic = new StraightLogic();
-    Scanner scanner = new Scanner(System.in);
+
 
     @Override
     public void nextTurn(String card) {
@@ -24,6 +25,8 @@ public class StraightTurn extends Turn {
             if (logic.validateNullRound(dicesRolled, dicesKept)) {
                 // if null round -> end
                 ending = true;
+                points = 0;
+                System.out.println("You rolled a null.\nTough luck!");
             } else {
                 // player chooses what dices to keep and validates the choice
                 do {

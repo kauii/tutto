@@ -28,7 +28,8 @@ public class Turn {
                 // if null round -> end
                 ending = true;
                 nullRound = true;
-                System.out.println("NULLROUND");
+                points = 0;
+                System.out.println("You rolled a null.\nTough luck!");
             } else {
                 // player chooses what dices to keep and validates the choice
                 toKeep = decideKeep(card, dicesRolled);
@@ -109,6 +110,7 @@ public class Turn {
                 // ask to confirm the selection
                 System.out.println("Confirm selection:");
                 System.out.println("Y - Yes | N - No");
+                System.out.print("Selected dices: ");
                 for (int value : dicesKeep) {
                     System.out.printf("%d ", value);
                 }

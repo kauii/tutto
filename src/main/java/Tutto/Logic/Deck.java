@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
-    private ArrayList<Card> mCards;
+    private final ArrayList<Card> mCards;
     private ArrayList<Card> mPulledCards;
 
 
     public Deck() {
-        mPulledCards = new ArrayList<Card>();
-        mCards = new ArrayList<Card>();
+        mPulledCards = new ArrayList<>();
+        mCards = new ArrayList<>();
         reset();
     }
 
@@ -42,7 +42,7 @@ public class Deck {
      */
     public Card pullRandom() {
         if (mCards.isEmpty())
-            return null;
+            throw new IllegalStateException();;
         Random randint = new Random();
         Card res;
         if (mCards.size() == 1) {

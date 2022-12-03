@@ -3,7 +3,7 @@ package Tutto.Logic;
 import java.util.Objects;
 
 public class Card {
-    private Rank mRank;
+    private final Rank mRank;
 
     public Card(Rank rank) {
         this.mRank = rank;

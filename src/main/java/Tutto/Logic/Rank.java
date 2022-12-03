@@ -12,5 +12,5 @@ public enum Rank {
     FIREWORKS,
     PLUSMINUS,
     CLOVERLEAF,
-    STRAIGHT;
+    STRAIGHT
 }
