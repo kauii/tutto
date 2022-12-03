@@ -12,7 +12,6 @@ public class Turn {
     DiceLogic logic = new DiceLogic();
     Scanner scanner = new Scanner(System.in);
 
-    // Constructor
     public void nextTurn(String card) {
 
         boolean ending = false;

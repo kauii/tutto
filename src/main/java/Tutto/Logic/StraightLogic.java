@@ -11,7 +11,7 @@ public class StraightLogic extends DiceLogic {
         int n5 = 0;
         int n6 = 0;
 
-        for (int dice: toCheck) {
+        for (int dice : toCheck) {
             switch (dice) {
                 case 1 -> n1++;
                 case 2 -> n2++;
@@ -26,15 +26,16 @@ public class StraightLogic extends DiceLogic {
 
         return n1 <= 1 && n2 <= 1 && n3 <= 1 && n4 <= 1 && n5 <= 1 && n6 <= 1;
     }
+
     @Override
-    public int pointsKeep(int[] toCheck){
+    public int pointsKeep(int[] toCheck) {
         return 0;
     }
 
     public boolean validateNullRound(int[] dicesRolled, int[] dicesKept) {
         int count = 0;
-        for (int dice1: dicesKept) {
-            for (int dice2: dicesRolled) {
+        for (int dice1 : dicesKept) {
+            for (int dice2 : dicesRolled) {
                 if (dice1 == dice2) {
                     count++;
                 }

@@ -23,7 +23,7 @@ public class Input {
             // Limit name length to 15
             for (int i = 0; i < names.length; i++) {
                 try {
-                    names[i]=names[i].replaceAll("^\\s+", "");
+                    names[i] = names[i].replaceAll("^\\s+", "");
                     names[i] = names[i].substring(0, 15);
                 } catch (StringIndexOutOfBoundsException ignored) {
                 }
@@ -163,7 +163,6 @@ public class Input {
 
         return inp == 'c';
     }
-
 
 
     public void close() {

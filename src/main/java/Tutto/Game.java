@@ -32,7 +32,6 @@ public class Game {
         // game loop starting with
         gameLoop();
 
-
         in.close();
     }
 
@@ -76,7 +75,9 @@ public class Game {
                     cLogic.checkCard(card);
                     if (cLogic.getScore() == 0) {
                         points = 0;
-                    } else { points = cLogic.getScore(); }
+                    } else {
+                        points = cLogic.getScore();
+                    }
                 } else { // If Player s
                     break;
                 }

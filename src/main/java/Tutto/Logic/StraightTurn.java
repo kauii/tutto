@@ -1,7 +1,6 @@
 package Tutto.Logic;
 
 
-
 public class StraightTurn extends Turn {
 
     private int points = 0;
