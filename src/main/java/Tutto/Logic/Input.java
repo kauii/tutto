@@ -24,6 +24,7 @@ public class Input {
             for (int i = 0; i < names.length; i++) {
                 // TODO: Trim string
                 try {
+                    names[i]=names[i].replaceAll("^\\s+", "");
                     names[i] = names[i].substring(0, 15);
                 } catch (StringIndexOutOfBoundsException ignored) {
                 }
