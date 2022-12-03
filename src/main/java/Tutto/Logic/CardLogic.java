@@ -93,7 +93,7 @@ public class CardLogic {
         turn.nextTurn("PLUSMINUS");
         tutto = turn.getTutto();
         if (tutto) {
-            return 1000;
+            return score += 1000;
         }
         return 0;
     }
