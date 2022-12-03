@@ -17,6 +17,10 @@ public class Player {
     }
 
     public void addScore(int points) {
-        score += points;
+        if (points > 0 || score >= (points * -1)) {
+            score += points;
+        } else {
+            score = 0;
+        }
     }
 }
