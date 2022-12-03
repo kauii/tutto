@@ -40,6 +40,7 @@ public class Game {
         boolean gameWon = false;
         int activePlayer = 0;
         boolean scoreboard;
+        boolean retry;
         int points;
         CardLogic cLogic;
         Card card;
@@ -106,6 +107,14 @@ public class Game {
                 printer.printScoreboard(players);
             }
 
+
+            // If tutto during play, player may pick up another card and try again
+            if(cLogic.getTutto()){
+                if(in.continueTutto()){
+                    activePlayer--;
+                }
+
+            }
 
             // int active player gets reset when >= playerAmount
             activePlayer++;
