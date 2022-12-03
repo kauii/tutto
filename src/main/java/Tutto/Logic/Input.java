@@ -22,7 +22,6 @@ public class Input {
 
             // Limit name length to 15
             for (int i = 0; i < names.length; i++) {
-                // TODO: Trim string
                 try {
                     names[i]=names[i].replaceAll("^\\s+", "");
                     names[i] = names[i].substring(0, 15);
@@ -140,7 +139,6 @@ public class Input {
     }
 
     public boolean getContinue() {
-        boolean con;
         boolean valid;
         char inp = 'n';
 
