@@ -68,11 +68,12 @@ public class CardLogic {
         Turn turn = new Turn();
         turn.nextTurn("DOUBLE");
         tutto = turn.getTutto();
-        score += turn.getTurnPoints();
 
         if (tutto) {
-            return score * 2;
+            score += turn.getTurnPoints() * 2;
+            return score;
         }
+        score += turn.getTurnPoints();
         return score;
     }
 
@@ -108,7 +109,7 @@ public class CardLogic {
             turn2.nextTurn("CLOVERLEAF");
             tutto = turn2.getTutto();
             if (tutto) {
-                return 999999999;
+                return 999999999; //TODO: could lead to error, too high int value
             }
         }
         return 0;

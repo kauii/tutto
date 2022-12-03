@@ -9,28 +9,21 @@ import static org.junit.jupiter.api.Assertions.*;
 class CardLogicTest {
     CardLogic cLogic = new CardLogic();
 
-
-    private int bonusCard(int bonus) {
-        try {
-            Method method = CardLogic.class.getDeclaredMethod("bonusCard", int.class);
-            method.setAccessible(true);
-            int score = 420;
-            return (int) method.invoke(cLogic, bonus);
-        } catch ( ReflectiveOperationException exception ) {
-            fail();
-            return bonusCard(bonus);
-        }
-    }
-
     @Test
     void checkCard() {
 
         cLogic.checkCard(new Card(Rank.STOP));
-        assert (cLogic.score == 0);
+        assert (cLogic.getScore() == 0);
+        assert (!cLogic.getTutto());
+
+        cLogic.checkCard(new Card(Rank.FIREWORKS));
+        assert (!cLogic.getTutto()); // Needs to be always false
 
     }
 
     @Test
-    void getScore() {
+    void setScore() {
+        cLogic.setScore(500);
+        assert (cLogic.getScore() == 500);
     }
 }
