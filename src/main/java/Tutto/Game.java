@@ -38,7 +38,6 @@ public class Game {
     private void gameLoop() {
         boolean lastRound = false;
         boolean gameEnd = false;
-        int winner = 0;
         int activePlayer = 0;
         boolean scoreboard;
         int points;
@@ -100,8 +99,7 @@ public class Game {
             players.get(activePlayer).addScore(points);
 
             // Check if activePlayer has enough points and there is no winner yet
-            if (players.get(activePlayer).getScore() >= targetScore && winner == 0) {
-                winner ++;
+            if (players.get(activePlayer).getScore() >= targetScore && !lastRound) {
                 lastRound = true;
 
                 if (activePlayer < playerAmount) {       // If round is not over yet
