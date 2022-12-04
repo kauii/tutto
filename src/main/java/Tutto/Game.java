@@ -95,6 +95,11 @@ public class Game {
                 }
             }
 
+            // Check if cloverleaf win
+            if (points >= 999999) {
+                gameEnd = true;
+            }
+
             // Depending on card: directly won, add points, subtract points
             players.get(activePlayer).addScore(points);
 
