@@ -1,5 +1,6 @@
 package Tutto.Logic;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Turn {
@@ -27,7 +28,7 @@ public class Turn {
                 // if null round -> end
                 ending = true;
                 nullRound = true;
-                points = 0;
+                if (!Objects.equals(card, "FIREWORKS")) { points = 0; } // FIREWORKS keeps all points
                 System.out.println("You rolled a null.\nTough luck!");
             } else {
                 // player chooses what dices to keep and validates the choice
