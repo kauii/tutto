@@ -108,7 +108,7 @@ public class CardLogic {
             turn2.nextTurn("CLOVERLEAF");
             tutto = turn2.getTutto();
             if (tutto) {
-                return 999999999; //TODO: could lead to error, too high int value
+                return 999999999; // Target Score <= 999999999
             }
         }
         return 0;
