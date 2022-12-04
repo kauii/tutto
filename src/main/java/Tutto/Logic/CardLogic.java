@@ -84,7 +84,7 @@ public class CardLogic {
             turn.nextTurn("FIREWORKS");
             tutto = turn.getTutto();
         } while (tutto);
-        return turn.getTurnPoints();
+        return score += turn.getTurnPoints();
     }
 
     //PLUS/MINUS - RULE
