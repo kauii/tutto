@@ -83,9 +83,6 @@ public class Game {
                 }
             }
 
-            // Depending on card: directly won, add points, subtract points
-            players.get(activePlayer).addScore(points);
-
             // Check if PlusMinus and if player won
             if (card.equals(new Card(Rank.PLUSMINUS)) && points != 0) {
                 // Find player with the highest score
@@ -96,6 +93,9 @@ public class Game {
                     leader.addScore(-1000);
                 }
             }
+
+            // Depending on card: directly won, add points, subtract points
+            players.get(activePlayer).addScore(points);
 
             // Check if activePlayer has enough points
             if (players.get(activePlayer).getScore() >= targetScore) {
