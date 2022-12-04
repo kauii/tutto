@@ -4,7 +4,7 @@ package Tutto.Logic;
 public class StraightTurn extends Turn {
 
     private int points = 0;
-
+    private boolean straight;
     private int[] dicesKept = {};
     StraightLogic logic = new StraightLogic();
 
@@ -40,7 +40,7 @@ public class StraightTurn extends Turn {
                 dicesKept = concatenate(dicesKept, checkKeep);  // TODO: either protected instead private or create keepInput again?
 
                 // check tutto/straight
-                boolean straight = logic.isTutto(dicesKept);
+                straight = logic.isTutto(dicesKept);
 
                 // check tutto/straight
                 if (straight) {
@@ -50,4 +50,14 @@ public class StraightTurn extends Turn {
             }
         }
     }
+    @Override
+    public int getTurnPoints() {
+        return points;
+    }
+
+    @Override
+    public boolean getTutto() {
+        return straight;
+    }
+
 }

@@ -78,7 +78,7 @@ public class Input {
                     res[i] = dicesRolled[Integer.parseInt(dices[i]) - 1];
                     valid = true;
                 }
-            } catch (ArrayIndexOutOfBoundsException exception) {
+            } catch (ArrayIndexOutOfBoundsException | NumberFormatException exception) {
                 System.out.println("Enter valid indices!\nTry again:");
                 valid = false;
             }

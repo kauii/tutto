@@ -84,7 +84,6 @@ public class CardLogic {
             turn.nextTurn("FIREWORKS");
             tutto = turn.getTutto();
         } while (tutto);
-        System.out.println(turn.getTurnPoints());
         return turn.getTurnPoints();
     }
 
@@ -119,6 +118,7 @@ public class CardLogic {
     private int straightCard() {
         StraightTurn turn = new StraightTurn();
         turn.nextTurn("STRAIGHT");
+        tutto = turn.getTutto();
         score += turn.getTurnPoints();
         return score;
     }

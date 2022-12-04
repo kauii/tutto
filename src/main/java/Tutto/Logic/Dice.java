@@ -8,7 +8,7 @@ public class Dice {
 
     public int roll() {
         // Global var
-        return rn.nextInt(1, 6);
+        return rn.nextInt(1, 7);
     }
 
 }
