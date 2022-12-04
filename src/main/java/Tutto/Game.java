@@ -36,7 +36,9 @@ public class Game {
     }
 
     private void gameLoop() {
-        boolean gameWon = false;
+        boolean lastRound = false;
+        boolean gameEnd = false;
+        int winner = 0;
         int activePlayer = 0;
         boolean scoreboard;
         int points;
@@ -97,23 +99,39 @@ public class Game {
             // Depending on card: directly won, add points, subtract points
             players.get(activePlayer).addScore(points);
 
-            // Check if activePlayer has enough points
-            if (players.get(activePlayer).getScore() >= targetScore) {
-                gameWon = true;
-                // Print win message
-                System.out.println();
-                System.out.println("############################################");
-                System.out.println(players.get(activePlayer).getName() + " won!!!");
-                printer.printScoreboard(players);
+            // Check if activePlayer has enough points and there is no winner yet
+            if (players.get(activePlayer).getScore() >= targetScore && winner == 0) {
+                winner ++;
+                lastRound = true;
+
+                if (activePlayer < playerAmount) {       // If round is not over yet
+                    System.out.println();
+                    System.out.println("############################################\n");
+                    System.out.println(players.get(activePlayer).getName() + " reached " + targetScore + " points!\nLast round!!");
+                }
             }
 
-
-            // int active player gets reset when >= playerAmount
+            // int active player gets reset when >= playerAmount (NEW ROUND BEGINS)
             activePlayer++;
-            if (activePlayer >= playerAmount) {
+            if (activePlayer >= playerAmount && !lastRound) {
                 activePlayer = 0;
             }
-        } while (!gameWon);
+
+            // int active player doesn't get reset (FINISH LAST ROUND)
+            if (activePlayer >= playerAmount && lastRound) {
+                gameEnd = true;
+            }
+
+        } while (!gameEnd);
+
+        // PRINT WINNER MESSAGE
+        leader = findLeader();
+        System.out.println();
+        System.out.println("############################################");
+        assert leader != null;
+        System.out.println(leader.getName() + " won!!!");
+        printer.printScoreboard(players);
+
     }
 
     private Player findLeader() {
@@ -139,6 +157,7 @@ public class Game {
         try {
             card = deck.pullRandom();
         } catch (IllegalStateException exception) {
+            System.out.println("Pile is empty. Deck is reshuffled!");
             deck.reset();
             card = deck.pullRandom();
         }
