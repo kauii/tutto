@@ -55,24 +55,6 @@ public class Deck {
         return res;
     }
 
-    /**
-     * Get a random cards, leaves it inside the pack
-     */
-    public Card getRandom() {
-        Card res;
-        if (mCards.isEmpty()) {
-            throw new IllegalStateException();
-        }
-        Random randint = new Random();
-        if (mCards.size() == 1) {
-            res = mCards.remove(0);
-        } else {
-            res = mCards.remove(randint.nextInt(mCards.size() - 1));
-        }
-        return res;
-    }
-
-
     public boolean isEmpty() {
         return mCards.isEmpty();
     }
