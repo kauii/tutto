@@ -1,5 +1,7 @@
 package Tutto.Logic;
 
+import Tutto.Deck.Card;
+import Tutto.Deck.Rank;
 import org.junit.jupiter.api.Test;
 
 class CardLogicTest {

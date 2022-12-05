@@ -1,5 +1,7 @@
-package Tutto.Logic;
+package Tutto.Turn;
 
+
+import Tutto.Logic.StraightLogic;
 
 public class StraightTurn extends Turn {
 

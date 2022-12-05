@@ -1,4 +1,4 @@
-package Tutto.Logic;
+package Tutto.Deck;
 
 public enum Rank {
 

@@ -1,5 +1,4 @@
-package Tutto;
-
+import Tutto.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,5 +35,6 @@ class PlayerTest {
         // Subtract more points than available
         player.addScore(-1000);
         assert (player.getScore() == 0);
+
     }
 }

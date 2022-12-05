@@ -1,5 +1,6 @@
 package Tutto.Logic;
 
+import Tutto.Dice.DiceSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package Tutto.Logic;
+package Tutto.Terminal;
 
 import Tutto.Player;
 

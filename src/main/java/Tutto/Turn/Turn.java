@@ -1,4 +1,9 @@
-package Tutto.Logic;
+package Tutto.Turn;
+
+import Tutto.Dice.DiceSet;
+import Tutto.Logic.DiceLogic;
+import Tutto.Terminal.Input;
+import Tutto.Terminal.Printer;
 
 import java.util.Objects;
 import java.util.Scanner;

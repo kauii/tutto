@@ -1,4 +1,4 @@
-package Tutto.Logic;
+package Tutto.Dice;
 
 import java.util.ArrayList;
 

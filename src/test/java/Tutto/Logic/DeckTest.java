@@ -1,5 +1,8 @@
 package Tutto.Logic;
 
+import Tutto.Deck.Card;
+import Tutto.Deck.Deck;
+import Tutto.Deck.Rank;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +19,7 @@ class DeckTest {
     @Test
     void checkEmpty() {
     	int i = 0;
-    	while ((deck.isEmpty()==false) && i <=56) {
+    	while ((!deck.isEmpty()) && i <=56) {
     		deck.pullRandom();
     		i++;
     	}
@@ -27,7 +30,7 @@ class DeckTest {
     @Test
     void checkSize() {
     	int i = 0;
-    	while ((deck.isEmpty()==false) && i <=60) {
+    	while ((!deck.isEmpty()) && i <=60) {
     		deck.pullRandom();
     		i++;
     	}
@@ -69,18 +72,11 @@ class DeckTest {
 
     }
 
-
     @Test
     void checkPullRandom() {
     	Card testCard = new Card(Rank.STOP);
         Card card = deck.pullRandom();
         assertEquals(card.getClass(), testCard.getClass());
 
-    }
-    @Test
-    void checkGetRandom() {
-    	Card testCard = new Card(Rank.STOP);
-        Card card = deck.pullRandom();
-        assertEquals(card.getClass(), testCard.getClass());
     }
 }

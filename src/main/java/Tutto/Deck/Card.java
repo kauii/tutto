@@ -1,4 +1,4 @@
-package Tutto.Logic;
+package Tutto.Deck;
 
 import java.util.Objects;
 

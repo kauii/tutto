@@ -1,6 +1,10 @@
 package Tutto.Logic;
 
-import static Tutto.Logic.Rank.*;
+import Tutto.Deck.Card;
+import Tutto.Turn.StraightTurn;
+import Tutto.Turn.Turn;
+
+import static Tutto.Deck.Rank.*;
 
 public class CardLogic {
     int score;
