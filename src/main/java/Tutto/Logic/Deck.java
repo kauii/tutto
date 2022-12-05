@@ -42,7 +42,7 @@ public class Deck {
      */
     public Card pullRandom() {
         if (mCards.isEmpty())
-            throw new IllegalStateException();;
+            throw new IllegalStateException();
         Random randint = new Random();
         Card res;
         if (mCards.size() == 1) {
