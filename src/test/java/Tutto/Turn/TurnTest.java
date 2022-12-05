@@ -1,6 +1,5 @@
-package Tutto.Logic;
+package Tutto.Turn;
 
-import Tutto.Turn.Turn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

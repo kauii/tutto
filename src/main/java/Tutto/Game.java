@@ -1,11 +1,9 @@
 package Tutto;
 
-import Tutto.Deck.Card;
-import Tutto.Deck.Deck;
-import Tutto.Deck.Rank;
+
+import Tutto.Deck.*;
 import Tutto.Logic.*;
-import Tutto.Terminal.Input;
-import Tutto.Terminal.Printer;
+import Tutto.Terminal.*;
 
 import java.util.ArrayList;
 import java.util.Objects;

@@ -1,8 +1,7 @@
 package Tutto.Logic;
 
 import Tutto.Deck.Card;
-import Tutto.Turn.StraightTurn;
-import Tutto.Turn.Turn;
+import Tutto.Turn.*;
 
 import static Tutto.Deck.Rank.*;
 

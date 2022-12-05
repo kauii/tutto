@@ -1,9 +1,8 @@
-package Tutto.Logic;
+package Tutto.Deck;
 
-import Tutto.Deck.Card;
-import Tutto.Deck.Rank;
 import org.junit.jupiter.api.Test;
 import java.util.Random;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
