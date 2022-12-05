@@ -96,7 +96,7 @@ public class Game {
             }
 
             // Check if cloverleaf win
-            if (points >= 999999) {
+            if (points >= 99999999) {
                 gameEnd = true;
             }
 
